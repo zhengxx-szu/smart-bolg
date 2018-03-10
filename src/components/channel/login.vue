@@ -14,7 +14,7 @@
         <span class="login-btn-text">登录</span>
       </a>
       <div class="register">
-        <span>还没有微博？</span>
+        <span>还没有账号？</span>
         <a id="to_register" href="">立即注册</a>
         </div>
     </div>

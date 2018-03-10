@@ -4,24 +4,24 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  onshowlist: []
+  blogList: []
 }
 
 const mutations = {
-  set_onshowlist (state, list) {
-    state.onshowlist = list
+  set_blogList (state, list) {
+    state.blogList = list
   }
 }
 
 const actions = {
-  set_onshowlist ({commit}, list) {
-    commit('set_onshowlist', list)
+  set_blogList ({commit}, list) {
+    commit('set_blogList', list)
   }
 }
 
 const getters = {
-  onshowlist (state) {
-    return state.onshowlist
+  blogList (state) {
+    return state.blogList
   }
 }
 

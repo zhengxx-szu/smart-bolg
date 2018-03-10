@@ -1,15 +1,20 @@
 <template>
   <div class="blog-list">
     {{msg}}
+    {{blogList}}
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
       msg: 'this is login'
     }
+  },
+  computed: {
+    ...mapGetters(['blogList'])
   }
 }
 </script>
@@ -19,6 +24,5 @@ export default {
   width: 660px;
   margin-right: 30px;
   min-height: 1200px;
-  background: #ed7350;
 }
 </style>

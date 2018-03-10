@@ -5,6 +5,7 @@
     <div class="right-wrapper">
 		  <login></login>
       <hot-news></hot-news>
+      <hot-topic></hot-topic>
     </div>
   </div>
 </template>
@@ -14,17 +15,22 @@ import navLeft from '@/components/channel/nav'
 import blogList from '@/components/channel/blogList'
 import login from '@/components/channel/login'
 import hotNews from '@/components/channel/hotNews'
+import hotTopic from '@/components/channel/hotTopic'
 export default {
 	components: {
     navLeft,
     blogList,
     login,
-    hotNews
+    hotNews,
+    hotTopic
 	},
   data () {
     return {
       msg: 'this is channel'
     }
+  },
+  methods: {
+
   }
 }
 </script>
@@ -37,7 +43,6 @@ export default {
   padding: 16px 0 0 0;
   .right-wrapper {
     width: 340px;
-    background: pink;
   }
 }
 </style>

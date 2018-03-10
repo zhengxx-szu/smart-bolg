@@ -7,20 +7,31 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { getBlogList } from '@/api/channel'
 export default {
   data () {
     return {
       navList: [
         '推荐',
         '热点',
-        '科技',
+        '社会',
         '娱乐',
-        '游戏',
+        '科技',
         '体育',
-        '搞笑',
-        '更多'
+        '国际'
       ]
     }
+  },
+  created () {
+    this._getBlogList('__all__')
+  },
+  methods: {
+    ...mapActions(['set_blogList']),
+    _getBlogList(type) {
+      getBlogList(type).then(res => this.set_blogList(res.data))
+    }
+
   }
 }
 </script>
@@ -36,7 +47,7 @@ export default {
       text-align: center;
       &:hover {
         border-radius: 4px;
-        background: #ed4040;
+        background: #fa7d3c;
         color: #fff;
       }
     }

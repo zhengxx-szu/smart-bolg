@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import register from '@/page/register'
 import channel from '@/page/channel'
-import list from '@/page/list'
+import detail from '@/page/detail'
 import user from '@/page/user'
 import setting from '@/page/setting'
 
@@ -25,8 +25,8 @@ export default new Router({
       ]
     },
     {
-      path: '/list',
-      component: list
+      path: '/detail',
+      component: detail
     },
     {
       path: '/register',
