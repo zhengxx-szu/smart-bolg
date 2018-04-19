@@ -8,11 +8,18 @@ con.on("error", console.error.bind(console, "连接数据库失败"));
 mongoose.model(
   "user",
   new mongoose.Schema({
-    username: { type: String, isRequired: true },
+    account: { type: String, isRequired: true },
     password: { type: String, isRequired: true },
     email: { type: String, isRequired: true },
-    list: { type: Object, default: [] },
-    avatar: { type: String, default: "http://www.qdaily.com/images/missing_face.png" }
+    list: { type: Array, default: [] },
+    username: { type: String, default: '用户名' + Number.parseInt(Math.random() * 100000) },
+    signature: { type: String, default: '这家伙很懒，什么也没有留下...'},
+    homepage: { type: String, default: '' },
+    avatar: { type: String, default: "http://www.qdaily.com/images/missing_face.png" },
+    follow: { type: Array, default: [] },
+    fans: { type: Array, default: [] },
+    collect: { type: Array, default: [] },
+    transmit: { type: Array, default: [] }
   })
 );
 
@@ -20,20 +27,29 @@ mongoose.model(
 mongoose.model(
   "article",
   new mongoose.Schema({
-    title: { type: String, isRequired: true }, //标题
-    content: { type: String, isRequired: true }, //内容
-    createAt: { type: String, isRequired: true },
-    pv: { type: Number, default: 0 },
-    user: { type: ObjectId, ref: "User" },
+    title: { type: String, isRequired: true },
+    time: { type: String, isRequired: true },    
+    content: { type: String, default: '' },
+    authorId: { type: String, default: 0 },
     username: { type: String, isRequired: true },
-    star: { type: Array, default: [] },
-    comments: [
-      {
-        user: { type: ObjectId, ref: "User" }, //评论人
-        content: { type: String }, //评论的内容
-        createAt: { type: String, isRequired: true } //评论的时间
-      }
-    ]
+    useravatar: { type: String, default: "http://www.qdaily.com/images/missing_face.png" },
+    keyword: { type: Array, default: [] },
+    imgList: { type: Array, default: [] },
+    id: { type: String, default: 0 },
+    transmit: { type: Array, default: [] },
+    comment: { type: Array, default: [] },
+    favor: { type: Array, default: [] },
+    type: { type: String, default: '__all__' }
+  })
+);
+
+//列表Model
+mongoose.model(
+  "ubt",
+  new mongoose.Schema({
+    user_id: { type: String, isRequired: true },
+    article_id: { type: String, isRequired: true },
+    havior: { type: String, isRequired: true }
   })
 );
 

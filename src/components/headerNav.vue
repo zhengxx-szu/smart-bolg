@@ -2,11 +2,26 @@
   <div class="header-wrapper">
 		<div class="header">
 			<div class="logo"></div>
-			<div class="search-box"><input type="text" placeholder="请输入关键字"></div>
-			<div class="channel" @click="toChannel()">首页</div>
-			<div class="hot">热门</div>
-			<div class="setting" @click="toSetting()">设置</div>
-			<div class="register" @click="toRegister()">注册</div>
+			<div class="channel" @click="toChannel()">
+        <i class="icon iconfont icon-home"></i>
+        首页
+      </div>
+			<div class="notice" @click="toRegister()">
+        <i class="icon iconfont icon-mail"></i>
+        通知
+      </div>      
+			<div class="setting" @click="toSetting()">
+        <i class="icon iconfont icon-cascades"></i>
+        设置
+      </div>
+			<div class="register" @click="toRegister()">
+        <i class="icon iconfont icon-edit"></i>
+        注册
+      </div>
+			<div class="search-box">
+        <input type="text" placeholder="请输入关键字">
+        <i class="icon iconfont icon-search"></i>        
+      </div>
 		</div>
   </div>
 </template>
@@ -36,33 +51,47 @@ export default {
 <style lang="less" scoped>
 .header-wrapper {
 	position: fixed;
-	width: 100%;
-	height: 48px;
-	box-shadow: 0 0 6px 2px rgba(0,0,0,0.15);
-	background: rgba(255, 255, 255, 0.95);
-	overflow: hidden;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+	z-index: 9999;
 	.header {
-		width: 1170px;
-		margin: 11px auto;
+    width: 1170px;
+    margin: 0 auto;
 		div {
-			display: inline-block;
-			width: 50px;
-			margin-right: 18px;
-			cursor: pointer;
-			&.channel, &:hover{
-				color: #ff790f;
-			}
-		}
-		.logo { width: 110px; margin-right: 30px; }
+      display: inline-block;
+      margin-right: 10px;
+      height: 26px;
+      line-height: 26px;
+      padding: 15px;
+      font-size: 17px;
+      vertical-align: top;
+      cursor: pointer;
+      i { font-size: 20px; }
+      &.channel { color: #ff790f; }
+      &:hover { color: #ff790f; background: #f5f5f5; }
+    }
+    .logo {
+      float: left;
+    }
 		.search-box {
-			width: 660px;
-			margin-right: 30px;
+      position: relative;
+      padding-left: 15px;
 			input {
-				width: 440px;
-				height: 20px;
-				padding: 4px 33px 4px 10px;
+				width: 200px;
+        height: 36px;
+        margin-top: -10px;
+        padding: 0 20px;
+        line-height: 36px;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        background: #eee;
 				outline: none;
-			}
+      }
+      i { position: absolute; top: 15px; right: 25px; font-size: 18px; }
+      &:hover { background: #fff; }
 		}
 	}
 }

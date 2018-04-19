@@ -25,12 +25,9 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   /* background-image: url('./assets/image/login_bg.png');
   background-size: cover;
   background-attachment: fixed; */
 }
-.main { padding-top: 50px;}
+.main { padding-top: 50px; margin-bottom: 100px; }
 </style>

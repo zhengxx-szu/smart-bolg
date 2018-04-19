@@ -42,7 +42,7 @@ export default {
   width: 300px;
   padding: 20px;
   margin-bottom: 20px;
-  background: #f2f2f5;
+  background: #f7f7f7;
   .hot-news-title {
     font-size: 18px;
     margin-bottom: 16px;

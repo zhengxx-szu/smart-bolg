@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <div class="logo">小小鸟博客</div>
+    <div class="logo">壹观</div>
     <div class="register-wrapper">
       <div class="register-box">
         <div class="error-msg" v-if="show_error">
@@ -53,12 +53,12 @@ export default {
         this.error_msg = '邮箱格式错误'
       } else {
         let params = {
-          username: this.$refs.account.value,
+          account: this.$refs.account.value,
           password: md5(this.$refs.password.value),
           email: this.$refs.email.value
         }
         toRegister(params).then((res) => {
-          if (res.state !== 0 ) {
+          if (res.state !== 'ok' ) {
             this.show_error = true
             this.error_msg = res.content
           } else {
@@ -74,15 +74,16 @@ export default {
 <style lang="less" scoped>
 .register {
   position: fixed;
-  width: 100%;
-  height: 100%;
   top: -50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-image: url('.././assets/image/login_bg.png');
   background-size: cover;
   background-attachment: fixed;
   .logo {
-    width: 260px;
-    margin: 80px auto;
+    width: 103px;
+    margin: 130px auto;
     color: #f0821b;
     font-size: 50px;
     font-family: 'Hanzipen SC';
@@ -98,7 +99,7 @@ export default {
     background-color: rgba(255,255,255,.9);
     .error-msg {
       position: absolute;
-      top: -48px;
+      top: -58px;
       font-size: 14px;
       line-height: 14px;
       height: 14px;
@@ -106,6 +107,7 @@ export default {
       width: 274px;
       padding: 12px;
       border: 1px solid #ff8140;
+      border-radius: 5px;
       background-color: #fff5f5;
       z-index: 10;
       .icon { color: #ff8140; margin-right: 5px; }
@@ -114,26 +116,26 @@ export default {
       position: relative;
       .input-box {
         position: relative;
-        font-size: 16px;
-        margin-bottom: 8px;
+        font-size: 14px;
+        margin-bottom: 12px;
         color: #666;
         input {
-          width: 282px;
-          font-size: 16px;
-          line-height: 32px;
-          height: 32px;
-          padding: 4px 8px;
-          border: 1px solid #ddd;
+          width: 268px;
+          font-size: 14px;
+          line-height: 28px;
+          height: 28px;
+          padding: 4px 15px;
+          border: 1px solid #ccc;
+          background: #f5f5f5;
+          border-radius: 5px;
           z-index: 1;
           outline: none;
         }
         .icon {
           position: absolute;
-          top: 0;
-          right: 10px;
-          height: 42px;
-          line-height: 42px;
-          font-size: 22px;
+          top: 9px;
+          right: 15px;
+          font-size: 18px;
         }
       }
       .info {
@@ -145,11 +147,12 @@ export default {
       .submit-btn {
         color: #fff;
         font-size: 18px;
-        line-height: 42px;
+        line-height: 36px;
         width: 300px;
         text-align: center;
         background-color: #ff8140;
-        margin: 30px 0;
+        border-radius: 5px;
+        margin: 20px 0 30px;
         cursor: pointer;
       }
     }

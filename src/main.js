@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from '@/store'
 import '@/assets/font/iconfont.css'
+import '@/assets/style/overwrite.less'
 
 Vue.config.productionTip = false
 

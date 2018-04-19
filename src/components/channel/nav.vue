@@ -1,7 +1,15 @@
 <template>
   <div class="nav">
     <ul class="list-wrapper">
-      <li class="list-item" v-for="item in navList" :key="item">{{item}}</li>
+      <li
+        class="list-item"
+        :class="item.type === activeBlogType ? 'active' : ''"
+        v-for="(item, index) in navList"
+        :key="index"
+        @click="getBlogType(item.type)"
+      >
+        {{item.text}}
+      </li>
     </ul>
   </div>
 </template>
@@ -13,25 +21,30 @@ export default {
   data () {
     return {
       navList: [
-        '推荐',
-        '热点',
-        '社会',
-        '娱乐',
-        '科技',
-        '体育',
-        '国际'
-      ]
+        { text: '推荐', type: '__all__' },
+        { text: '热点', type: 'news_hot' },
+        { text: '社会', type: 'news_society' },
+        { text: '娱乐', type: 'news_entertainment' },
+        { text: '科技', type: 'news_tech' },
+        { text: '体育', type: 'news_sports' },
+        { text: '国际', type: 'news_world' }
+      ],
+      activeBlogType: '__all__'
     }
   },
   created () {
-    this._getBlogList('__all__')
+    this.getBlogType('__all__')
   },
   methods: {
-    ...mapActions(['set_blogList']),
+    ...mapActions(['set_blogList', 'set_activeType']),
     _getBlogList(type) {
-      getBlogList(type).then(res => this.set_blogList(res.data))
+      getBlogList(type).then(res => this.set_blogList(res))
+    },
+    getBlogType(type) {
+      this.activeBlogType = type
+      this.set_activeType(type)
+      this._getBlogList(type)
     }
-
   }
 }
 </script>
@@ -45,7 +58,8 @@ export default {
       height: 40px;
       line-height: 40px;
       text-align: center;
-      &:hover {
+      margin-top: 3px;
+      &.active, &:hover {
         border-radius: 4px;
         background: #fa7d3c;
         color: #fff;
