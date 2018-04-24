@@ -33,8 +33,6 @@ function itemRecommend (id) {
                 
                 user_item_table[user.user_id].push(user.article_id)
             })
-            console.log('user_item_table')
-            console.log(user_item_table)
             echoMatrix = calculateEchoMatrix(user_item_table)
             item_user_table = calculateItemUserTable(user_item_table)
             cosSimMatrix = calculateCosSimMatrix(echoMatrix, item_user_table)
@@ -108,7 +106,41 @@ function itemRecommend (id) {
                     }
                 }
             }
+            updateRecommend(rankList)
+            // 更新数据库
+            var condition = { _id: id }
+            model('user').findOne(condition, function (err, user) {
+                var oldList = user.list
+                var update = {
+                    $set: {
+                        list: recommendList.splice(0, 20).concat(oldList)
+                    }
+                }
+                model('user').update(condition, update, function (err, state) {
+                    if (state) console.log('itemRecommend ok!')
+                })
+            })
         })
+    }
+
+    // 对推荐权重表进行排序
+    function updateRecommend (list) {
+        for (var m = 0; m < Object.keys(list).length; m++) {
+            var maxScore = null, maxScoreId = null
+            for (var i in list) {
+                if (!maxScore && !maxScoreId) {
+                    maxScore = list[i]
+                    maxScoreId = i
+                } else if (maxScore < list[i]) {
+                    maxScore = list[i]
+                    maxScoreId = i
+                }
+            }
+            list[maxScoreId] = 0
+            if (maxScore !== 0){
+                recommendList.push(maxScoreId)
+            }
+        }
     }
 }
 

@@ -238,6 +238,8 @@ export default {
     position: relative;
     padding: 50px;
     background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
     .main-box {
       h1 { margin: 20px 0; font-size: 24px; font-weight: 700; }
       ul {
@@ -269,6 +271,9 @@ export default {
               }
               .edit-btn { color: #333; }
             }
+          }
+          &:hover {
+            background: rgba(255, 121, 15, 0.01);
           }
           &:first-child { padding: 12px 0; }
           .avatar-upload {

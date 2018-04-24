@@ -89,7 +89,7 @@ export default {
       let page = this.page + 1
       this.set_page(page)
       this.load_msg = '加载中···'
-      getBlogList(this.activeType, this.page).then(res => {
+      getBlogList(this.activeType, this.page, this.token).then(res => {
         this.loadMoreBlog(res)
         this.load_msg = '点击加载更多'
       })

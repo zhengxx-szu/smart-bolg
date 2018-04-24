@@ -50,6 +50,7 @@ router.post('/login', function (req, res) {
 	var user = req.body
     model('user').findOne({ account: user.account, password: user.password }, function (err, result) {
        	if (result) {
+			baseRecommend(result._id)
 			itemRecommend(result._id)
         	res.send({ state: 'ok', content: '登录成功', token: result._id, info: result })
       	} else {

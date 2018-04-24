@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { getBlogList } from '@/api/channel'
 export default {
   data () {
@@ -32,13 +32,21 @@ export default {
       activeBlogType: '__all__'
     }
   },
+  computed: {
+    ...mapGetters([
+      'token'
+    ])
+  },
   created () {
     this.getBlogType('__all__')
   },
   methods: {
-    ...mapActions(['set_blogList', 'set_activeType']),
+    ...mapActions([
+      'set_blogList',
+      'set_activeType'
+    ]),
     _getBlogList(type) {
-      getBlogList(type).then(res => this.set_blogList(res))
+      getBlogList(type, 0, this.token).then(res => this.set_blogList(res))
     },
     getBlogType(type) {
       this.activeBlogType = type

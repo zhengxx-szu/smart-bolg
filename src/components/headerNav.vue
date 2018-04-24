@@ -1,7 +1,9 @@
 <template>
   <div class="header-wrapper">
 		<div class="header">
-			<div class="logo"></div>
+			<div class="logo">
+        <span class="icon"></span>
+      </div>
 			<div class="channel" @click="toChannel()">
         <i class="icon iconfont icon-home"></i>
         首页
@@ -31,7 +33,7 @@ import Router from '@/router'
 export default {
   data () {
     return {
-      msg: 'this is login'
+      iconUrl: ''
     }
 	},
 	methods: {
@@ -74,6 +76,16 @@ export default {
     }
     .logo {
       float: left;
+      width: 110px;
+      height: 56px;
+      padding: 0;
+      margin-right: 30px;      
+      .icon {
+        display: inline-block;
+        width: 110px;
+        height: 56px;
+        background: url('../assets/image/icon.png')
+      }
     }
 		.search-box {
       position: relative;

@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <div class="logo">壹观</div>
+    <div class="logo"></div>
     <div class="register-wrapper">
       <div class="register-box">
         <div class="error-msg" v-if="show_error">
@@ -82,20 +82,21 @@ export default {
   background-size: cover;
   background-attachment: fixed;
   .logo {
-    width: 103px;
-    margin: 130px auto;
-    color: #f0821b;
-    font-size: 50px;
-    font-family: 'Hanzipen SC';
-    font-weight: bold;
+    width: 300px;
+    height: 200px;
+    margin: 100px auto;
+    background: url('../assets/image/big-icon.png');
+    overflow: hidden;
   }
   .register-wrapper {
     position: absolute;
-    top: 230px;
+    top: 300px;
     left: 50%;
     margin-left: -200px;
     width: 300px;
-    padding: 28px 50px 0;
+    padding: 50px 50px 0;
+    border: 1px solid #eee;
+    border-radius: 10px;
     background-color: rgba(255,255,255,.9);
     .error-msg {
       position: absolute;
@@ -152,7 +153,7 @@ export default {
         text-align: center;
         background-color: #ff8140;
         border-radius: 5px;
-        margin: 20px 0 30px;
+        margin: 20px 0 50px;
         cursor: pointer;
       }
     }

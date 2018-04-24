@@ -41,6 +41,18 @@ function baseRecommend (id) {
             count++
             if (user_length === count) {
                 updateRecommend()
+                var condition = { _id: id }
+                model('user').findOne(condition, function (err, user) {
+                    var oldList = user.list
+                    var update = {
+                        $set: {
+                            list: oldList.concat(recommendList.splice(0, 20))
+                        }
+                    }
+                    model('user').update(condition, update, function (err, state) {
+                        if (state) console.log('baseRecommend ok!')
+                    })
+                })
             }
         })
     }

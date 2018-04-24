@@ -9,18 +9,15 @@ export function getHotNews() {
 	return commonFetch(url, data)
 }
 
-export function getBlogList(type, page) {
+export function getBlogList(type, page, token) {
 	const url = 'http://localhost:3000/article/getBlogList'
 	const data = Object.assign({}, {
 		page: page || 0,
-		tag: type,
-		ac: 'wap',
-		count: 20,
-		format: 'json_raw',
-		as: 'A1E51ACA72C534F',
-		cp: '5AA27543844F9E1',
-		min_behot_time: parseInt(new Date().getTime() / 1000)
+		tag: type
 	})
+	if (token) {
+		data.token = token
+	}
 	return commonFetch(url, data)
 }
 
